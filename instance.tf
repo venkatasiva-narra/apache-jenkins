@@ -6,7 +6,7 @@ resource "aws_instance" "test_instance" {
     subnet_id         = "${aws_subnet.test_public_subnet.id}"
     vpc_security_group_ids  = ["${aws_security_group.test_security.id}"]
     key_name          = "apache-webserver"
-    user_data         = file("./apace.sh")
+    user_data         = file("./apache.sh")
 
     tags = {
         Name = "test_instance"
