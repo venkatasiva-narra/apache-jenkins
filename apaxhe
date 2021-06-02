@@ -1,0 +1,33 @@
+pipeline{
+    agent any
+    
+    tools {
+        terraform 'terraform-tool'
+    }
+    
+    stages {
+        stage("checkout from GIT"){
+            steps {
+                git branch: 'main', credentialsId: 'Github', url: 'https://github.com/venkatasiva-narra/apache-jenkins/'
+            }
+        }
+        stage ("terraform init"){
+            steps {
+                sh 'terraform init'
+            }
+        }
+        stage ("terraform plan"){
+            steps {
+                sh 'terraform plan'
+            }
+        }
+        stage ("terraform apply"){
+            steps {
+                sh 'terraform apply --auto-approve'
+            }
+        }
+        
+    }
+        
+    
+}
