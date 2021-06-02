@@ -1,8 +1,3 @@
-provider "aws" {
-  profile = "default"
-  region  = "us-west-2"
-}
-
 
 resource "aws_vpc" "test_vpc" {
   cidr_block       = "192.168.0.0/16"
