@@ -1,13 +1,5 @@
 
 
-resource "aws_internet_gateway" "test_ig" {
-  vpc_id = "${aws_vpc.test_vpc.id}"
-
-  tags = {
-    Name = "test_ig"
-  }
-}
-
 resource "aws_subnet" "test_public_subnet" {
   vpc_id            = "${aws_vpc.test_vpc.id}"
   cidr_block        = "192.168.0.0/24"
