@@ -1,5 +1,6 @@
 resource "aws_security_group" "test_security" {
     name = "test_security"
+    vpc_id = aws_vpc.test_vpc.id
     ingress {
         from_port = 22
         to_port   = 22
@@ -18,3 +19,4 @@ resource "aws_security_group" "test_security" {
         protocol  = "-1"
         cidr_blocks = ["0.0.0.0/0"]
     }
+}
