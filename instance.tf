@@ -5,6 +5,16 @@ resource "aws_instance" "test_instance" {
     subnet_id         = "${aws_subnet.test_public_subnet.id}"
     security_groups   = ["${aws_security_group.test_security.name}"]
     key_name          = "apache-webserver"
+        user_data         = <<- EOF
+                    
+                    #!/bin/bash
+                    yum update -y
+                    yum install httpd -y
+                    service httpd start
+                    cd /var/www/html/
+                    echo "apache web" >index.html
+                    chkconfig httpd on
+                    EOF
 
     tags = {
         Name = "test_instance"
