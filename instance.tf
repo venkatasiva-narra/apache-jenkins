@@ -5,7 +5,7 @@ resource "aws_instance" "test_instance" {
     associate_public_ip_address = true
     subnet_id         = "${aws_subnet.test_public_subnet.id}"
     vpc_security_group_ids  = ["${aws_security_group.test_security.id}"]
-    key_name          = "apache-webserver"
+    key_name          = "pub-ins"
     user_data         = file("./apache.sh")
 
     tags = {
